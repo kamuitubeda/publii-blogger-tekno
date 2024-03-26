@@ -3,7 +3,7 @@
     <title>Blogger Tekno</title>
     <link href="https://bloggertekno.com/feed.xml" rel="self" />
     <link href="https://bloggertekno.com" />
-    <updated>2024-03-26T15:20:21+07:00</updated>
+    <updated>2024-03-26T15:27:09+07:00</updated>
     <author>
         <name>Ahsan</name>
     </author>
@@ -17,6 +17,7 @@
         <link href="https://bloggertekno.com/mengirimkan-form-response-ke-banyak-spreadsheet.html"/>
         <id>https://bloggertekno.com/mengirimkan-form-response-ke-banyak-spreadsheet.html</id>
         <media:content url="https://bloggertekno.com/media/posts/1/Code-for-Multiple-File-Response-Google-Form-Submission.jpg" medium="image" />
+            <category term="google form"/>
 
         <updated>2024-03-26T15:18:21+07:00</updated>
             <summary>
