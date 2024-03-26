@@ -3,10 +3,81 @@
     <title>Blogger Tekno</title>
     <link href="https://bloggertekno.com/feed.xml" rel="self" />
     <link href="https://bloggertekno.com" />
-    <updated>1970-01-01T07:00:00+07:00</updated>
+    <updated>2024-03-26T15:20:21+07:00</updated>
     <author>
         <name>Ahsan</name>
     </author>
     <id>https://bloggertekno.com</id>
 
+    <entry>
+        <title>Mengirimkan Form Response ke Banyak Spreadsheet</title>
+        <author>
+            <name>Ahsan</name>
+        </author>
+        <link href="https://bloggertekno.com/mengirimkan-form-response-ke-banyak-spreadsheet.html"/>
+        <id>https://bloggertekno.com/mengirimkan-form-response-ke-banyak-spreadsheet.html</id>
+        <media:content url="https://bloggertekno.com/media/posts/1/Code-for-Multiple-File-Response-Google-Form-Submission.jpg" medium="image" />
+
+        <updated>2024-03-26T15:18:21+07:00</updated>
+            <summary>
+                <![CDATA[
+                        <img src="https://bloggertekno.com/media/posts/1/Code-for-Multiple-File-Response-Google-Form-Submission.jpg" alt="Mengirimkan Form ke Banyak Spreadsheet" />
+                    Google Form merupakan salah satu aplikasi yang paling banyak digunakan dalam mengumpulkan data secara online. Di antara kelebihan Google Form dibandingkan form builder lainnya adalah&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <p><img src="https://bloggertekno.com/media/posts/1/Code-for-Multiple-File-Response-Google-Form-Submission.jpg" class="type:primaryImage" alt="Mengirimkan Form ke Banyak Spreadsheet" /></p>
+                <p>Google Form merupakan salah satu aplikasi yang paling banyak digunakan dalam mengumpulkan data secara online. Di antara kelebihan Google Form dibandingkan form builder lainnya adalah konektivitasnya dengan berbagai macam aplikasi Google yang lain, termasuk Spreadsheet.</p>
+<p>Secara default, masing-masing form yang kita buat itu hanya akan disambungkan dengan satu file Spreadsheet. Masalah akan mulai muncul jika ternyata kita punya kebutuhan untuk membagikan hasil isian form ke banyak orang tanpa ingin membagikan file spreadsheet utama.</p>
+<p>Seperti halnya yang sering terjadi di dunia kerja. Ketika kita punya banyak divisi tapi form yang digunakan hanya satu, maka solusi yang bisa diambil adalah memastikan tiap divisi punya file Spreadsheet secara terpisah agar tidak sampai salah data. Selain <span style="color: var(--text-primary-color); font-family: var(--editor-font-family); font-size: inherit; font-weight: var(--font-weight-normal);">juga untuk memastikan bahwa file Spreadsheet utama hanya bisa diakses oleh orang-orang tertentu.</span></p>
+<p>Buat kamu yang ingin membuat form dan membagikan hasilnya ke banyak orang (banyak Spreadsheet), berikut ini caranya:</p>
+<p>1. Tambahkan Editor Skrip</p>
+<p>Untuk caranya, silakan klik tanda titik tiga yang ada di pojok kanan form, lalu pilih "Editor Skrip".</p>
+<figure class="post__image"><img loading="lazy"  src="https://bloggertekno.com/media/posts/1/Tambahkan-Editor-Skrip.jpg" alt="Editor Skrip Google Form" width="1305" height="664" sizes="(min-width: 920px) 703px, (min-width: 700px) calc(82vw - 35px), calc(100vw - 81px)" srcset="https://bloggertekno.com/media/posts/1/responsive/Tambahkan-Editor-Skrip-xs.jpg 300w ,https://bloggertekno.com/media/posts/1/responsive/Tambahkan-Editor-Skrip-sm.jpg 480w ,https://bloggertekno.com/media/posts/1/responsive/Tambahkan-Editor-Skrip-md.jpg 768w ,https://bloggertekno.com/media/posts/1/responsive/Tambahkan-Editor-Skrip-lg.jpg 1024w"></figure>
+<p>2. Setelah Muncul Halaman Editor Skip, Masukkan Kode Seperti Berikut</p>
+<pre class="language-javascript"><code>function onFormSubmit(e) {
+  const itemResponses = e.response.getItemResponses();
+  var responses = e.response.getItemResponses(); // Get the submitted responses
+  
+  // Construct an array of response values
+  var formResponse = responses.map(function(response) {
+    return response.getResponse();
+  });
+
+  // Get the timestamp of the form submission
+  var timestamp = e.response.getTimestamp();
+  
+  // Add timestamp to the beginning of the formResponse array
+  formResponse.unshift(timestamp);
+  
+  const pertanyaan_kedua = itemResponses[1].getResponse();
+  // var main_spreadsheet = SpreadsheetApp.openById('1Z8EDXVO7v4Wx23G8HwqgBU2d3H1m18eTjFZmoL07pIE');
+  // var main_sheet = main_spreadsheet.getActiveSheet();
+  var second_spreadsheet = SpreadsheetApp.openById('1JHI8NCKMiA88nl_2clp1bFQqacce6MU0CIdf0iiCWXI');
+  var second_sheet = second_spreadsheet.getActiveSheet();
+
+  if (pertanyaan_kedua === 'Opsi 1') {
+    second_sheet.appendRow(formResponse);
+  }
+  // else {
+  //   main_sheet.appendRow(formResponse);
+  // }
+}</code></pre>
+<p>3. Buat Spreadsheet Baru dan Share Aksesnya dengan Hak Sebagai Editor</p>
+<figure class="post__image align-center"><img loading="lazy"  src="https://bloggertekno.com/media/posts/1/Share-Spreadsheet.jpg" alt="Berbagai Akses Spreadsheet" width="571" height="482" sizes="(min-width: 920px) 703px, (min-width: 700px) calc(82vw - 35px), calc(100vw - 81px)" srcset="https://bloggertekno.com/media/posts/1/responsive/Share-Spreadsheet-xs.jpg 300w ,https://bloggertekno.com/media/posts/1/responsive/Share-Spreadsheet-sm.jpg 480w ,https://bloggertekno.com/media/posts/1/responsive/Share-Spreadsheet-md.jpg 768w ,https://bloggertekno.com/media/posts/1/responsive/Share-Spreadsheet-lg.jpg 1024w"></figure>
+<p>4. Sesuaikan ID Spreadsheet yang Sudah Kamu Buat Pada Kode di Atas</p>
+<p>Untuk mendapatkan ID Spreadsheet, caranya adalah dengan mengakses Spreadsheetnya, dan salin kode pada bagian berikut:</p>
+<figure class="post__image align-center"><img loading="lazy"  src="https://bloggertekno.com/media/posts/1/Mengambil-ID-Spreadsheet.jpg" alt="Cara Identifikasi ID Spreadsheet" width="907" height="76" sizes="(min-width: 920px) 703px, (min-width: 700px) calc(82vw - 35px), calc(100vw - 81px)" srcset="https://bloggertekno.com/media/posts/1/responsive/Mengambil-ID-Spreadsheet-xs.jpg 300w ,https://bloggertekno.com/media/posts/1/responsive/Mengambil-ID-Spreadsheet-sm.jpg 480w ,https://bloggertekno.com/media/posts/1/responsive/Mengambil-ID-Spreadsheet-md.jpg 768w ,https://bloggertekno.com/media/posts/1/responsive/Mengambil-ID-Spreadsheet-lg.jpg 1024w"></figure>
+<p>5. Atur Triggernya</p>
+<p>Langkah selanjutnya yang perlu kamu lakukan adalah mengatur trigger (pemicu), untuk memastikan kapan kode tersebut akan dijalankan. </p>
+<figure class="post__image align-center"><img loading="lazy"  src="https://bloggertekno.com/media/posts/1/Atur-Trigger.jpg" alt="Mengatur Trigger Google Script" width="424" height="338" sizes="(min-width: 920px) 703px, (min-width: 700px) calc(82vw - 35px), calc(100vw - 81px)" srcset="https://bloggertekno.com/media/posts/1/responsive/Atur-Trigger-xs.jpg 300w ,https://bloggertekno.com/media/posts/1/responsive/Atur-Trigger-sm.jpg 480w ,https://bloggertekno.com/media/posts/1/responsive/Atur-Trigger-md.jpg 768w ,https://bloggertekno.com/media/posts/1/responsive/Atur-Trigger-lg.jpg 1024w"></figure>
+<p>6. Sesuaikan Triggernya</p>
+<figure class="post__image align-center"><img loading="lazy"  src="https://bloggertekno.com/media/posts/1/Trigger-Form-on-Submit.jpg" alt="Atur Trigger Google Form Script" width="741" height="612" sizes="(min-width: 920px) 703px, (min-width: 700px) calc(82vw - 35px), calc(100vw - 81px)" srcset="https://bloggertekno.com/media/posts/1/responsive/Trigger-Form-on-Submit-xs.jpg 300w ,https://bloggertekno.com/media/posts/1/responsive/Trigger-Form-on-Submit-sm.jpg 480w ,https://bloggertekno.com/media/posts/1/responsive/Trigger-Form-on-Submit-md.jpg 768w ,https://bloggertekno.com/media/posts/1/responsive/Trigger-Form-on-Submit-lg.jpg 1024w"></figure>
+<p>7. Uji Coba</p>
+<p>Setelah pengaturan semuanya selesai. Langkah terakhir adalah uji coba kodenya. Caranya adalah dengan lakukan pengisian pada form sampai selesai dan submit, lalu silakan cek, apakah isian form benar-benar terisi di banyak file Spreadsheet.</p>
+<p>Demikian sedikit tutorial singkat mengenai cara mengirimkan form response ke banyak spreadsheet. Semoga bermanfaat.</p>
+            ]]>
+        </content>
+    </entry>
 </feed>
