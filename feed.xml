@@ -3,12 +3,101 @@
     <title>Blogger Tekno</title>
     <link href="https://bloggertekno.com/feed.xml" rel="self" />
     <link href="https://bloggertekno.com" />
-    <updated>2024-03-28T11:40:03+07:00</updated>
+    <updated>2024-03-28T12:09:46+07:00</updated>
     <author>
         <name>Ahsan</name>
     </author>
     <id>https://bloggertekno.com</id>
 
+    <entry>
+        <title>Mengintegrasikan Google Form ke Banyak Sheet </title>
+        <author>
+            <name>Ahsan</name>
+        </author>
+        <link href="https://bloggertekno.com/mengintegrasikan-google-form-ke-banyak-sheet.html"/>
+        <id>https://bloggertekno.com/mengintegrasikan-google-form-ke-banyak-sheet.html</id>
+
+        <updated>2024-03-28T11:51:39+07:00</updated>
+            <summary>
+                <![CDATA[
+                    Sebelumnya, saya sudah pernah menjelaskan cara mengintegrasikan Google Form dengan banyak file Spreadsheet. Kali ini, saya akan menjelaskan cara mengintegrasikan Google Form dengan banyak sheet&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p>Sebelumnya, saya sudah pernah menjelaskan <a href="https://bloggertekno.com/mengintegrasikan-google-form-ke-banyak-sheet.html">cara mengintegrasikan Google Form dengan banyak file Spreadsheet</a>. Kali ini, saya akan menjelaskan cara mengintegrasikan Google Form dengan banyak sheet dalam 1 file. </p>
+<p>Secara umum, cara untuk mengintegrasikan Google Form ke banyak sheet tidak jauh berbeda dengan mengintegrasikan Google Form dengan banyak file Spreadsheet. Yang membedakan hanya kode programnya saja. Jadi, pada tutorial kali ini, saya tidak akan menuliskan langkahnya secara lengkap. Untuk langkahnya mulai dari awal silakan ikuti <a href="https://bloggertekno.com/mengintegrasikan-google-form-ke-banyak-sheet.html">tutorial sebelumnya di sini</a>. Sementara pada tutorial kali ini saya akan langsung menjelaskan kode programnya.</p>
+<p>Seperti yang sudah pernah saya jelaskan, untuk mengintegrasikan Google Form dengan banyak file Spreadsheet, kita bisa menggunakan kode seperti di bawah ini:</p>
+<pre class="language-javascript line-numbers"><code>function onFormSubmit(e) {
+  const itemResponses = e.response.getItemResponses();
+  var responses = e.response.getItemResponses(); // Get the submitted responses
+  
+  // Construct an array of response values
+  var formResponse = responses.map(function(response) {
+    return response.getResponse();
+  });
+
+  // Get the timestamp of the form submission
+  var timestamp = e.response.getTimestamp();
+  
+  // Add timestamp to the beginning of the formResponse array
+  formResponse.unshift(timestamp);
+  
+  // Menampung jawaban pertanyaan kedua untuk digunakan sebagai parameter dalam filtering
+  const pertanyaan_kedua = itemResponses[1].getResponse();
+
+  var second_spreadsheet = SpreadsheetApp.openById('SPREADSHEETID');
+  var second_sheet = second_spreadsheet.getActiveSheet();
+  
+  // Mengecek apakah jawaban pertanyaan kedua adalah "Opsi 1", jika ya, maka akan ditambahkan ke file Spreadsheet yang lain, selain pada Spreadsheet utama.
+  if (pertanyaan_kedua === 'Opsi 1') {
+    second_sheet.appendRow(formResponse);
+  }
+}</code></pre>
+<p>Sementara untuk mengintegrasikan Google Form ke banyak sheet dalam 1 file, kita perlu menambahkan pemanggilan nama sheet dan pengkondisian untuk menentukan sheet mana yang akan ditambah datanya. Kurang lebih seperti ini.</p>
+<pre class="language-javascript line-numbers"><code>const ss = SpreadsheetApp.getActiveSpreadsheet();
+
+if (status === 'Student') {
+    ss.getSheetByName('Student_Copy').appendRow(e.values);
+} else {
+    ss.getSheetByName('Staff_copy').appendRow(e.values);
+}</code></pre>
+<p>Dan jika digabungkan mulai dari awal, kode lengkapnya kurang lebihnya adalah sebagai berikut:</p>
+<pre class="language-javascript line-numbers"><code>function onFormSubmit(e) {
+  const itemResponses = e.response.getItemResponses();
+  var responses = e.response.getItemResponses(); // Get the submitted responses
+  
+  // Construct an array of response values
+  var formResponse = responses.map(function(response) {
+    return response.getResponse();
+  });
+
+  // Get the timestamp of the form submission
+  var timestamp = e.response.getTimestamp();
+  
+  // Add timestamp to the beginning of the formResponse array
+  formResponse.unshift(timestamp);
+  
+  // Menampung jawaban pertanyaan kedua untuk digunakan sebagai parameter dalam filtering
+  const pertanyaan_kedua = itemResponses[1].getResponse();
+
+  // Menampung file spreadsheet yang tersambung dengan form
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  
+  // Mengecek apakah jawaban pertanyaan kedua adalah "Opsi 1", jika ya, tambahkan data ke sheet student. jika tidak, tambahkan data ke sheet staf.
+  if (pertanyaan_kedua === 'Opsi 1') {
+     // Menambah row data pada tab (sheet) yang bernama 'Student_Copy'
+     ss.getSheetByName('Student_Copy').appendRow(formResponse);
+  } else {
+    // Menambah row data pada tab (sheet) yang bernama 'Staff_copy'
+    ss.getSheetByName('Staff_copy').appendRow(formResponse);
+  }
+}</code></pre>
+<p class="msg--highlight msg ">Satu yang perlu diperhatikan, agar kode di atas bisa berjalan dengan baik, pastikan dalam file Spreadsheet yang kamu gunakan, ada tab (sheet) dengan nama Student_Copy dan Staff_Copy. Karena jika tidak, maka akan muncul error.</p>
+<p>Demikian tutorial singkat kali ini. Semoga bermanfaat.</p>
+            ]]>
+        </content>
+    </entry>
     <entry>
         <title>ASUS Zenbook DUO (UX8406): Dual Monitor, Produktivitas Gas Pol</title>
         <author>
@@ -268,7 +357,7 @@
 <p>Untuk caranya, silakan klik tanda titik tiga yang ada di pojok kanan form, lalu pilih "Editor Skrip".</p>
 <figure class="post__image"><img loading="lazy"  src="https://bloggertekno.com/media/posts/1/Tambahkan-Editor-Skrip.jpg" alt="Editor Skrip Google Form" width="1305" height="664" sizes="(min-width: 920px) 703px, (min-width: 700px) calc(82vw - 35px), calc(100vw - 81px)" srcset="https://bloggertekno.com/media/posts/1/responsive/Tambahkan-Editor-Skrip-xs.webp 300w ,https://bloggertekno.com/media/posts/1/responsive/Tambahkan-Editor-Skrip-sm.webp 480w ,https://bloggertekno.com/media/posts/1/responsive/Tambahkan-Editor-Skrip-md.webp 768w ,https://bloggertekno.com/media/posts/1/responsive/Tambahkan-Editor-Skrip-lg.webp 1024w"></figure>
 <p>2. Setelah Muncul Halaman Editor Skip, Masukkan Kode Seperti Berikut</p>
-<pre class="language-javascript"><code>function onFormSubmit(e) {
+<pre class="language-javascript line-numbers"><code>function onFormSubmit(e) {
   const itemResponses = e.response.getItemResponses();
   var responses = e.response.getItemResponses(); // Get the submitted responses
   
