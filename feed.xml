@@ -3,12 +3,49 @@
     <title>Blogger Tekno</title>
     <link href="https://bloggertekno.com/feed.xml" rel="self" />
     <link href="https://bloggertekno.com" />
-    <updated>2024-03-29T08:42:48+07:00</updated>
+    <updated>2024-05-24T22:22:33+07:00</updated>
     <author>
         <name>Ahsan</name>
     </author>
     <id>https://bloggertekno.com</id>
 
+    <entry>
+        <title>Aplikasi Direktori UMKM dan Usaha Lokal</title>
+        <author>
+            <name>Ahsan</name>
+        </author>
+        <link href="https://bloggertekno.com/aplikasi-direktori-umkm-dan-usaha-lokal.html"/>
+        <id>https://bloggertekno.com/aplikasi-direktori-umkm-dan-usaha-lokal.html</id>
+        <media:content url="https://bloggertekno.com/media/posts/6/Jalan-Jualan-Aplikasi-Direktori-UMKM-dan-Usaha-Lokal.jpg" medium="image" />
+            <category term="usaha lokal"/>
+            <category term="umkm"/>
+            <category term="aplikasi"/>
+
+        <updated>2024-05-24T22:22:33+07:00</updated>
+            <summary>
+                <![CDATA[
+                        <img src="https://bloggertekno.com/media/posts/6/Jalan-Jualan-Aplikasi-Direktori-UMKM-dan-Usaha-Lokal.jpg" alt="" />
+                    Sebagai bukan perokok, saya termasuk orang yang sangat suka jajan. Maka dari itu, saya suka mencari info mengenai penjual jajan atau makanan ringan di sekitar&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <p><img src="https://bloggertekno.com/media/posts/6/Jalan-Jualan-Aplikasi-Direktori-UMKM-dan-Usaha-Lokal.jpg" class="type:primaryImage" alt="" /></p>
+                <p>Sebagai bukan perokok, saya termasuk orang yang sangat suka jajan. Maka dari itu, saya suka mencari info mengenai penjual jajan atau makanan ringan di sekitar tempat tinggal saya. </p>
+<p>Tapi sayangnya, penjual jajan atau makanan ringan semacam itu biasanya susah untuk dicari. Karena usahanya bersifat rumahan. Sehingga pelanggannya rata-rata hanya para tetangganya.</p>
+<p>Maka dari itu, saya kepikiran untuk membuat aplikasi yang bertujuan untuk mendata semua penjual dan pengusaha lokal di sekitar saya. </p>
+<p>Untuk teknologinya sendiri, saya menggunakan Framework7 dan Vue sebagai frontend. Sedangkan untuk backend-nya saya pakai Supabase. </p>
+<p>Saat tulisan ini saya buat, halaman frontend-nya sudah lumayan. </p>
+<figure class="post__image post__image--center"><img loading="lazy"  src="https://bloggertekno.com/media/posts/6/Jalan-Jualan.jpg" alt="" width="456" height="662" sizes="(min-width: 920px) 703px, (min-width: 700px) calc(82vw - 35px), calc(100vw - 81px)" srcset="https://bloggertekno.com/media/posts/6/responsive/Jalan-Jualan-xs.webp 300w ,https://bloggertekno.com/media/posts/6/responsive/Jalan-Jualan-sm.webp 480w ,https://bloggertekno.com/media/posts/6/responsive/Jalan-Jualan-md.webp 768w ,https://bloggertekno.com/media/posts/6/responsive/Jalan-Jualan-lg.webp 1024w"></figure>
+<p>Tinggal backend-nya yang masih perlu banyak PR. Karena sampai saat ini, baru login saja yang sudah. Fungsionalitas lainnya belum. Datanya masih dummy semua.</p>
+<p>Aplikasinya bisa kamu coba di jalanjualan.com. Nantinya aplikasinya akan saya ubah menjadi versi Android agar bisa dipublikasikan ke dalam Google Play Store. Sehingga bisa digunakan secara lebih luas.</p>
+<p>Karena saya merasa UMKM dan penjual lokal sampai saat ini masih belum tersentuh oleh teknologi. Di satu sisi, mereka butuh tempat promosi yang hemat biaya dan bisa memasarkan produk atau jasa mereka secara luas. Di sisi lain, para pelanggan juga butuh aplikasi direktori yang memudahkan kami untuk mencari berbagai macam penyedia produk dan jasa.</p>
+<p>Karena aplikasi seperti GoFood pun sampai sekarang belum bisa menyentuh UMKM secara luas. Apalagi ditambah dengan besarnya biaya layanan GoJek yang membuat harga produk lebih mahal daripada harga aslinya.</p>
+<p>Target saya, pertengahan Juni aplikasinya sudah mulai bisa digunakan secara bebas. Dan sejujurnya, saya merasa pemasaran aplikasi ini akan butuh waktu yang tidak sebentar. Apalagi untuk input datanya. Karena aplikasi ini hanya akan jalan ketika banyak penjual dan pembeli yang menggunakannya. </p>
+<p>Tapi saya sudah punya beberapa rencana yang akan gunakan untuk memasarkan aplikasi direktori UMKM ini. Semoga di tahun ini bisa punya lebih dari 1000 data penjual. Dan di tahun selanjutnya jumlahnya bisa meningkat 100 kali lipat. </p>
+            ]]>
+        </content>
+    </entry>
     <entry>
         <title>10+ Aplikasi untuk Baca Buku Secara Gratis dan Legal</title>
         <author>
